@@ -1,1 +1,16 @@
-NaN
+
+<script>
+const slides=document.querySelectorAll('.slide');const total=slides.length;let current=0;const dots=document.getElementById('dots');const counter=document.getElementById('counter');const prevBtn=document.getElementById('prevBtn');const nextBtn=document.getElementById('nextBtn');
+for(let i=0;i<total;i++){const dot=document.createElement('div');dot.className='dot'+(i===0?' active':'');dot.dataset.index=i;dot.addEventListener('click',()=>goTo(i));dots.appendChild(dot);}
+function goTo(index){if(index===current)return;slides[current].classList.remove('active');slides[current].classList.add('exit');setTimeout(()=>{slides[current].classList.remove('exit');slides[index].classList.add('active');},50);current=index;updateUI();}
+function updateUI(){counter.textContent = (current + 1) + " / " + total;prevBtn.disabled=current===0;nextBtn.disabled=current===total-1;document.querySelectorAll('.dot').forEach((d,i)=>{d.classList.toggle('active',i===current);});}
+function next(){if(current<total-1)goTo(current+1);}
+function prev(){if(current>0)goTo(current-1);}
+prevBtn.addEventListener('click',prev);nextBtn.addEventListener('click',next);
+document.addEventListener('keydown',(e)=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}if(e.key==='ArrowLeft'){e.preventDefault();prev();}});
+let touchStartX=0;let touchEndX=0;
+document.addEventListener('touchstart',(e)=>{touchStartX=e.changedTouches[0].screenX;});
+document.addEventListener('touchend',(e)=>{touchEndX=e.changedTouches[0].screenX;const diff=touchStartX-touchEndX;if(Math.abs(diff)>50){if(diff>0)next();else prev();}});
+</script>
+</body>
+</html>
