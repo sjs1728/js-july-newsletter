@@ -203,25 +203,25 @@
     <div class="lt">📅 7월 휴강일정</div>
     <div class="hc">
       <span class="c r">매주 월요일 휴강</span>
-      <span class="c r">7/17(목) 제헌절</span>
+      <span class="c r">7/17(금) 제헌절</span>
       <span class="c g">7/29~31 5주차</span>
       <span class="c b">🏖️ 7/28~8/2 방학</span>
     </div>
     <div class="cg">
       <div class="hd">일</div><div class="hd">월</div><div class="hd">화</div><div class="hd">수</div><div class="hd">목</div><div class="hd">금</div><div class="hd">토</div>
-      <div class="d gr">1</div><div class="d r">2</div><div class="d">3</div><div class="d">4</div><div class="d">5</div><div class="d">6</div><div class="d">7</div>
-      <div class="d">8</div><div class="d r">9</div><div class="d">10</div><div class="d">11</div><div class="d">12</div><div class="d">13</div><div class="d">14</div>
-      <div class="d">15</div><div class="d r">16</div><div class="d">17</div><div class="d">18</div><div class="d">19</div><div class="d">20</div><div class="d">21</div>
-      <div class="d">22</div><div class="d r">23</div><div class="d">24</div><div class="d">25</div><div class="d">26</div><div class="d v">27</div><div class="d v">28</div>
-      <div class="d v">29</div><div class="d v">30</div><div class="d v">31</div>
+      <div class="d gr"></div><div class="d gr"></div><div class="d gr"></div><div class="d">1</div><div class="d">2</div><div class="d">3</div><div class="d">4</div>
+      <div class="d">5</div><div class="d r">6</div><div class="d">7</div><div class="d">8</div><div class="d">9</div><div class="d">10</div><div class="d">11</div>
+      <div class="d">12</div><div class="d r">13</div><div class="d">14</div><div class="d">15</div><div class="d">16</div><div class="d">17</div><div class="d">18</div>
+      <div class="d">19</div><div class="d r">20</div><div class="d">21</div><div class="d">22</div><div class="d">23</div><div class="d">24</div><div class="d">25</div>
+      <div class="d">26</div><div class="d r">27</div><div class="d v">28</div><div class="d v">29</div><div class="d v">30</div><div class="d v">31</div>
     </div>
     <div class="leg">
       <span><span class="ld r"></span> 휴강</span>
       <span><span class="ld v"></span> 방학</span>
     </div>
     <p style="margin-top:6px;font-size:11px;color:#aaa;">
-      ※ 7/28(월) 방학 → 보강 대체<br>
-      ※ 8/1(토)~8/2(일) → 8월 5주차 대체수업
+      ※ 7/28(화)~8/2(일) 방학기간<br>
+      ※ 7/29~31 5주차 (방학 중 주)
     </p>
     <div class="up">
       <div class="ut">🌟 다가오는 일정</div>
@@ -233,7 +233,7 @@
   <!-- 3: 시합소식 -->
   <div class="slide s3">
     <div class="st">🛼 새만금 인라인마라톤 완주 소식</div>
-    <p>안녕하세요, 학부모님 🙇‍♂️</p>
+    <p>안녕하세요, 학부모님 🙇♂️</p>
     <p>지난 1박 2일간의 새만금 인라인마라톤(11km)에서 우리 선수 15명과 지도자 5명 <strong>전원이 안전하게 완주</strong>했습니다. 👏🎉</p>
     <p>이번 도전은 단순한 대회를 넘어, 아이들에게 값진 <strong>💎 성장의 여정</strong>이었습니다.</p>
     <div class="hb">
@@ -305,7 +305,6 @@ const counter = document.getElementById('counter');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 
-// dots 생성
 for (let i = 0; i < total; i++) {
   const dot = document.createElement('div');
   dot.className = 'dot' + (i === 0 ? ' active' : '');
@@ -316,15 +315,12 @@ for (let i = 0; i < total; i++) {
 
 function goTo(index) {
   if (index === current) return;
-  
   slides[current].classList.remove('active');
   slides[current].classList.add('exit');
-  
   setTimeout(() => {
     slides[current].classList.remove('exit');
     slides[index].classList.add('active');
   }, 50);
-  
   current = index;
   updateUI();
 }
@@ -349,13 +345,11 @@ function prev() {
 prevBtn.addEventListener('click', prev);
 nextBtn.addEventListener('click', next);
 
-// 키보드
 document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
   if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
 });
 
-// 터치 스와이프
 let touchStartX = 0;
 let touchEndX = 0;
 document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
